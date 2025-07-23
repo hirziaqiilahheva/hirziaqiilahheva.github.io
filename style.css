@@ -1,0 +1,16 @@
+.jumbotron{
+padding-top: 6rem;
+background-color: lavender;
+}
+.jumbotron img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+#projects {
+    background-color: lavender;
+}
+section{
+padding: 5rem; 
+}
