@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sejarah - Pameran Batik Indonesia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    .font-playfair { font-family: 'Playfair Display', serif; }
+    .font-inter { font-family: 'Inter', sans-serif; }
+    body { font-family: 'Inter', sans-serif; }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    /* Animated Hero Background */
+    .hero-animated {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-animated::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(251, 191, 36, 0.1) 25%, 
+        rgba(245, 158, 11, 0.2) 50%, 
+        rgba(251, 191, 36, 0.1) 75%, 
+        transparent 100%);
+      animation: shimmer 8s infinite;
+      z-index: 1;
+    }
+
+    .hero-animated::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, 
+        rgba(180, 83, 9, 0.8), 
+        rgba(68, 64, 60, 0.9), 
+        rgba(28, 25, 23, 0.95));
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
+      z-index: 0;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes float {
+      0%, 100% { 
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+        opacity: 0.6;
+      }
+      33% { 
+        transform: translateY(-20px) translateX(10px) rotate(120deg);
+        opacity: 0.8;
+      }
+      66% { 
+        transform: translateY(-10px) translateX(-10px) rotate(240deg);
+        opacity: 0.4;
+      }
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(251, 191, 36, 0.3);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 2;
+      animation: float linear infinite;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+    }
+  </style>
+</head>
+<body class="bg-stone-50">
+  <!-- Navigation -->
+  <nav class="fixed w-full bg-white/95 backdrop-blur-md shadow-lg z-50">
+    <div class="container mx-auto px-4 sm:px-6 py-4">
+      <div class="flex justify-between items-center">
+        <div class="text-xl sm:text-2xl font-playfair font-bold text-amber-800">
+          Batik Nusantara
+        </div>
+        <div class="hidden md:flex space-x-6 lg:space-x-8">
+          <a href="index.html" class="nav-link text-stone-700 hover:text-amber-700 font-medium transition-colors duration-300">Home</a>
+          <a href="tentang.html" class="nav-link text-stone-700 hover:text-amber-700 font-medium transition-colors duration-300">Tentang Batik</a>
+          <a href="sejarah.html" class="nav-link text-amber-700 font-bold transition-colors duration-300">Sejarah</a>
+          <a href="galeri.html" class="nav-link text-stone-700 hover:text-amber-700 font-medium transition-colors duration-300">Galeri</a>
+          <a href="kontak.html" class="nav-link text-stone-700 hover:text-amber-700 font-medium transition-colors duration-300">Kontak</a>
+        </div>
+        <div class="md:hidden">
+          <button id="mobileMenuBtn" class="text-stone-700">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="md:hidden hidden mt-4 pb-4 space-y-2">
+        <a href="index.html" class="block py-2 text-stone-700 hover:text-amber-700">Home</a>
+        <a href="tentang.html" class="block py-2 text-stone-700 hover:text-amber-700">Tentang Batik</a>
+        <a href="sejarah.html" class="block py-2 text-amber-700 font-bold">Sejarah</a>
+        <a href="galeri.html" class="block py-2 text-stone-700 hover:text-amber-700">Galeri</a>
+        <a href="kontak.html" class="block py-2 text-stone-700 hover:text-amber-700">Kontak</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-12 hero-animated text-white">
+    <div class="container mx-auto px-4 sm:px-6 hero-content">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-playfair font-bold mb-6">Perjalanan Batik Nusantara</h1>
+        <p class="text-lg sm:text-xl text-amber-100 leading-relaxed">Dari istana keraton hingga pentas dunia, batik telah menjadi simbol identitas bangsa selama berabad-abad</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Sejarah -->
+  <section class="py-16 sm:py-20 bg-gradient-to-br from-stone-50 to-amber-50">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl sm:text-4xl font-playfair font-bold text-stone-800 mb-4">Timeline Sejarah</h2>
+          <div class="w-24 h-1 bg-amber-600 mx-auto"></div>
+        </div>
+
+        <!-- Timeline Items -->
+        <div class="space-y-8 sm:space-y-12">
+          <!-- Era Pra-Majapahit -->
+          <div class="relative pl-8 sm:pl-12 border-l-4 border-amber-600">
+            <div class="absolute -left-3 top-0 w-6 h-6 bg-amber-600 rounded-full border-4 border-white"></div>
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg card-hover">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+                <h3 class="text-2xl font-playfair font-bold text-stone-800 mb-2 sm:mb-0">Era Pra-Majapahit</h3>
+                <span class="text-amber-600 font-semibold text-lg">Abad ke-7 - 12</span>
+              </div>
+              <p class="text-stone-600 leading-relaxed mb-4">
+                Jejak awal batik ditemukan pada relief Candi Prambanan dan berbagai artefak kuno. Teknik pewarnaan kain dengan lilin sudah dikenal di wilayah Nusantara, terutama di Jawa, meskipun belum sesempurna batik yang kita kenal sekarang.
+              </p>
+              <div class="bg-amber-50 p-4 rounded-lg border-l-4 border-amber-600">
+                <p class="text-sm text-stone-700"><strong>Fakta Menarik:</strong> Kata "batik" berasal dari bahasa Jawa "amba" (menulis) dan "titik" (titik), yang menggambarkan proses pembuatannya.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Era Majapahit -->
+          <div class="relative pl-8 sm:pl-12 border-l-4 border-amber-600">
+            <div class="absolute -left-3 top-0 w-6 h-6 bg-amber-600 rounded-full border-4 border-white"></div>
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg card-hover">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+                <h3 class="text-2xl font-playfair font-bold text-stone-800 mb-2 sm:mb-0">Kejayaan Majapahit</h3>
+                <span class="text-amber-600 font-semibold text-lg">Abad ke-13 - 15</span>
+              </div>
+              <p class="text-stone-600 leading-relaxed mb-4">
+                Batik berkembang pesat sebagai pakaian kerajaan dan kalangan bangsawan. Motif-motif seperti Kawung dan Parang Rusak menjadi motif larangan (forbidden patterns) yang hanya boleh dikenakan oleh keluarga keraton. Setiap motif memiliki filosofi dan makna spiritual yang mendalam.
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                <div class="bg-stone-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-stone-800 mb-2">Motif Kawung</h4>
+                  <p class="text-sm text-stone-600">Melambangkan kesucian dan keadilan, terinspirasi dari buah kawung (aren)</p>
+                </div>
+                <div class="bg-stone-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-stone-800 mb-2">Motif Parang</h4>
+                  <p class="text-sm text-stone-600">Simbol kekuatan dan keperkasaan, motif diagonal yang megah</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Era Kesultanan -->
+          <div class="relative pl-8 sm:pl-12 border-l-4 border-amber-600">
+            <div class="absolute -left-3 top-0 w-6 h-6 bg-amber-600 rounded-full border-4 border-white"></div>
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg card-hover">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+                <h3 class="text-2xl font-playfair font-bold text-stone-800 mb-2 sm:mb-0">Era Kesultanan Mataram</h3>
+                <span class="text-amber-600 font-semibold text-lg">Abad ke-16 - 18</span>
+              </div>
+              <p class="text-stone-600 leading-relaxed mb-4">
+                Batik menyebar ke berbagai keraton di Jawa Tengah dan Yogyakarta. Keraton Surakarta dan Yogyakarta mengembangkan gaya batik yang berbeda. Batik pesisiran mulai berkembang di kota-kota pelabuhan dengan pengaruh budaya Tionghoa, Arab, dan Eropa yang lebih terbuka dan berani dalam pewarnaan.
+              </p>
+              <div class="bg-amber-50 p-4 rounded-lg">
+                <p class="text-sm text-stone-700"><strong>Perkembangan Penting:</strong> Muncul pembagian batik keraton (halus dan filosofis) dan batik pesisir (berani dan penuh warna)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Era Kolonial -->
+          <div class="relative pl-8 sm:pl-12 border-l-4 border-amber-600">
+            <div class="absolute -left-3 top-0 w-6 h-6 bg-amber-600 rounded-full border-4 border-white"></div>
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg card-hover">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+                <h3 class="text-2xl font-playfair font-bold text-stone-800 mb-2 sm:mb-0">Masa Kolonial Belanda</h3>
+                <span class="text-amber-600 font-semibold text-lg">Abad ke-19 - 20</span>
+              </div>
+              <p class="text-stone-600 leading-relaxed mb-4">
+                Batik mulai diproduksi secara komersial. Para pengusaha Tionghoa dan Belanda membuka pabrik batik. Muncul batik cap yang lebih efisien daripada batik tulis. Batik Indo-Eropa (batik Belanda) berkembang dengan motif buketan (bunga-bunga) yang dipengaruhi gaya Eropa. Batik menjadi komoditas ekspor yang penting.
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                <div class="bg-stone-50 p-4 rounded-lg border-l-4 border-stone-400">
+                  <h4 class="font-semibold text-stone-800 mb-2">Batik Tulis</h4>
+                  <p class="text-sm text-stone-600">Dibuat dengan canting, proses 2-6 bulan, nilai artistik tinggi</p>
+                </div>
+                <div class="bg-stone-50 p-4 rounded-lg border-l-4 border-amber-600">
+                  <h4 class="font-semibold text-stone-800 mb-2">Batik Cap</h4>
+                  <p class="text-sm text-stone-600">Menggunakan stempel tembaga, produksi lebih cepat dan terjangkau</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Era Kemerdekaan -->
+          <div class="relative pl-8 sm:pl-12 border-l-4 border-amber-600">
+            <div class="absolute -left-3 top-0 w-6 h-6 bg-amber-600 rounded-full border-4 border-white"></div>
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg card-hover">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+                <h3 class="text-2xl font-playfair font-bold text-stone-800 mb-2 sm:mb-0">Era Kemerdekaan & Orde Baru</h3>
+                <span class="text-amber-600 font-semibold text-lg">1945 - 1998</span>
+              </div>
+              <p class="text-stone-600 leading-relaxed mb-4">
+                Batik menjadi simbol nasionalisme Indonesia. Presiden Soekarno mempopulerkan batik sebagai busana resmi. Industri batik berkembang di berbagai daerah seperti Pekalongan, Solo, Yogyakarta, Cirebon, dan Madura. Setiap daerah mengembangkan ciri khas motif dan warnanya. Batik mulai dikenakan dalam acara-acara formal pemerintahan.
+              </p>
+            </div>
+          </div>
+
+          <!-- Era UNESCO -->
+          <div class="relative pl-8 sm:pl-12 border-l-4 border-amber-600">
+            <div class="absolute -left-3 top-0 w-6 h-6 bg-amber-600 rounded-full border-4 border-white"></div>
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border-2 border-amber-600 card-hover">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+                <h3 class="text-2xl font-playfair font-bold text-stone-800 mb-2 sm:mb-0">Pengakuan UNESCO</h3>
+                <span class="text-amber-600 font-semibold text-lg">2 Oktober 2009</span>
+              </div>
+              <p class="text-stone-600 leading-relaxed mb-4">
+                Batik Indonesia resmi diakui UNESCO sebagai Masterpiece of Oral and Intangible Heritage of Humanity. Tanggal 2 Oktober ditetapkan sebagai Hari Batik Nasional. Pengakuan ini memicu kebangkitan kembali industri batik dan meningkatkan kesadaran masyarakat untuk melestarikan warisan budaya.
+              </p>
+              <div class="bg-gradient-to-r from-amber-600 to-amber-700 text-white p-6 rounded-lg">
+                <p class="text-lg font-semibold mb-2">🏆 Pencapaian Bersejarah</p>
+                <p class="text-sm">Indonesia menjadi negara pertama di Asia Tenggara yang berhasil mendaftarkan batik sebagai warisan budaya dunia</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Era Modern -->
+          <div class="relative pl-8 sm:pl-12 border-l-4 border-amber-600">
+            <div class="absolute -left-3 top-0 w-6 h-6 bg-amber-600 rounded-full border-4 border-white"></div>
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg card-hover">
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+                <h3 class="text-2xl font-playfair font-bold text-stone-800 mb-2 sm:mb-0">Era Digital & Kontemporer</h3>
+                <span class="text-amber-600 font-semibold text-lg">2010 - Sekarang</span>
+              </div>
+              <p class="text-stone-600 leading-relaxed mb-4">
+                Batik bertransformasi menjadi industri kreatif modern. Designer muda menciptakan inovasi dengan memadukan motif tradisional dengan desain kontemporer. Batik hadir dalam berbagai bentuk: fashion modern, aksesoris, dekorasi interior, hingga produk digital. E-commerce dan media sosial memperluas jangkauan pasar batik ke seluruh dunia.
+              </p>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
+                <div class="text-center p-3 bg-amber-50 rounded-lg">
+                  <p class="text-2xl font-bold text-amber-600">200+</p>
+                  <p class="text-xs text-stone-600">Motif Batik</p>
+                </div>
+                <div class="text-center p-3 bg-amber-50 rounded-lg">
+                  <p class="text-2xl font-bold text-amber-600">5000+</p>
+                  <p class="text-xs text-stone-600">Pengrajin</p>
+                </div>
+                <div class="text-center p-3 bg-amber-50 rounded-lg">
+                  <p class="text-2xl font-bold text-amber-600">50+</p>
+                  <p class="text-xs text-stone-600">Negara Ekspor</p>
+                </div>
+                <div class="text-center p-3 bg-amber-50 rounded-lg">
+                  <p class="text-2xl font-bold text-amber-600">15+</p>
+                  <p class="text-xs text-stone-600">Tahun UNESCO</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Warisan Budaya -->
+  <section class="py-16 bg-gradient-to-br from-amber-900 via-stone-800 to-stone-900 text-white">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl sm:text-4xl font-playfair font-bold mb-6">Warisan Untuk Generasi Mendatang</h2>
+        <p class="text-lg text-amber-100 leading-relaxed mb-8">
+          Batik bukan sekadar kain bermotif, tetapi cerminan filosofi hidup, identitas budaya, dan keahlian turun-temurun yang harus kita jaga dan lestarikan untuk anak cucu kita.
+        </p>
+        <div class="inline-block bg-white/10 backdrop-blur-sm px-8 py-4 rounded-full border border-amber-600">
+          <p class="text-amber-300 font-semibold">Setiap helai batik menyimpan cerita berabad-abad</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-stone-900 text-white py-12 sm:py-16">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl sm:text-2xl font-playfair font-bold mb-4">Batik Nusantara</h3>
+          <p class="text-stone-300 leading-relaxed text-sm sm:text-base">
+            Melestarikan dan mempromosikan keindahan batik Indonesia sebagai warisan budaya dunia yang tak ternilai.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-base sm:text-lg font-semibold mb-4">Navigasi</h4>
+          <ul class="space-y-2 text-sm sm:text-base">
+            <li><a href="index.html" class="text-stone-300 hover:text-amber-400 transition-colors">Home</a></li>
+            <li><a href="tentang.html" class="text-stone-300 hover:text-amber-400 transition-colors">Tentang Batik</a></li>
+            <li><a href="sejarah.html" class="text-amber-400 transition-colors">Sejarah</a></li>
+            <li><a href="galeri.html" class="text-stone-300 hover:text-amber-400 transition-colors">Galeri</a></li>
+            <li><a href="kontak.html" class="text-stone-300 hover:text-amber-400 transition-colors">Kontak</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-base sm:text-lg font-semibold mb-4">Warisan UNESCO</h4>
+          <p class="text-stone-300 text-xs sm:text-sm leading-relaxed">
+            Batik Indonesia telah diakui UNESCO sebagai Masterpiece of Oral and Intangible Heritage of Humanity pada 2 Oktober 2009.
+          </p>
+        </div>
+      </div>
+      <div class="border-t border-stone-700 mt-8 sm:mt-12 pt-6 sm:pt-8 text-center">
+        <p class="text-stone-400 text-xs sm:text-sm">&copy; 2025 Pameran Batik Indonesia. Warisan budaya untuk generasi masa depan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Create floating particles
+    function createParticles() {
+      const hero = document.querySelector('.hero-animated');
+      const particleCount = 30;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        const size = Math.random() * 6 + 2;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        
+        hero.appendChild(particle);
+      }
+    }
+
+    createParticles();
+  </script>
+</body>
+</html>

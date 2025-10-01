@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeri - Pameran Batik Indonesia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-stone-50 font-inter">
+  <!-- Navigation -->
+  <nav class="fixed w-full bg-white/95 backdrop-blur-md shadow-lg z-50">
+    <div class="container mx-auto px-4 sm:px-6 py-4">
+      <div class="flex justify-between items-center">
+        <div class="text-xl sm:text-2xl font-playfair font-bold text-amber-800">
+          Batik Nusantara
+        </div>
+        <div class="hidden md:flex space-x-6 lg:space-x-8">
+          <a href="index.html" class="nav-link text-stone-700 hover:text-amber-700 font-medium transition-colors duration-300">Home</a>
+          <a href="tentang.html" class="nav-link text-stone-700 hover:text-amber-700 font-medium transition-colors duration-300">Tentang Batik</a>
+          <a href="sejarah.html" class="nav-link text-stone-700 hover:text-amber-700 font-medium transition-colors duration-300">Sejarah</a>
+          <a href="galeri.html" class="nav-link text-amber-700 font-bold transition-colors duration-300">Galeri</a>
+          <a href="kontak.html" class="nav-link text-stone-700 hover:text-amber-700 font-medium transition-colors duration-300">Kontak</a>
+        </div>
+        <div class="md:hidden">
+          <button id="mobileMenuBtn" class="text-stone-700">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="md:hidden hidden mt-4 pb-4 space-y-2">
+        <a href="index.html" class="block py-2 text-stone-700 hover:text-amber-700">Home</a>
+        <a href="tentang.html" class="block py-2 text-stone-700 hover:text-amber-700">Tentang Batik</a>
+        <a href="sejarah.html" class="block py-2 text-stone-700 hover:text-amber-700">Sejarah</a>
+        <a href="galeri.html" class="block py-2 text-amber-700 font-bold">Galeri</a>
+        <a href="kontak.html" class="block py-2 text-stone-700 hover:text-amber-700">Kontak</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Galeri -->
+  <section class="pt-32 pb-16 sm:pb-20 bg-white">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12 sm:mb-16">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-playfair font-bold text-stone-800 mb-6">Galeri Batik Nusantara</h2>
+        <div class="w-16 sm:w-24 h-1 bg-amber-600 mx-auto mb-6"></div>
+        <p class="text-base sm:text-xl text-stone-600 max-w-3xl mx-auto">Koleksi batik terpilih dari berbagai daerah di Indonesia</p>
+      </div>
+
+      <!-- Batik Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8" id="batikGrid">
+        <!-- Card 1 -->
+        <div class="batik-card rounded-3xl shadow-xl overflow-hidden w-full" 
+             data-name="Batik Mega Mendung" 
+             data-origin="Cirebon"
+             data-description="Motif khas dari Cirebon dengan bentuk awan bergelombang yang melambangkan kesabaran, keteduhan, dan pembawaan yang tenang. Warna biru pada motif ini terinspirasi dari pengaruh budaya Tionghoa yang kuat di pesisir Jawa. Motif mega mendung sering dikaitkan dengan sifat raja yang harus sabar dan dapat memberikan keteduhan bagi rakyatnya."
+             data-image="img/WhatsApp Image 2025-09-30 at 07.31.27_a0f45e22.jpg">
+          <div class="h-64 sm:h-80 rounded-t-3xl overflow-hidden">
+            <img src="img/WhatsApp Image 2025-09-29 at 12.16.25_b96395b1.jpg" alt="Batik Mega Mendung" 
+                 class="w-full h-full object-cover object-top">
+          </div>
+          <div class="p-6 sm:p-8">
+            <h3 class="text-xl sm:text-2xl font-bold text-stone-800">Batik Mega Mendung</h3>
+            <p class="text-amber-600 font-semibold text-base sm:text-lg">Cirebon</p>
+            <button class="mt-4 bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-full text-sm transition-colors">
+              Lihat Detail
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="batik-card rounded-3xl shadow-xl overflow-hidden w-full"
+             data-name="Batik Kawung" 
+             data-origin="Yogyakarta"
+             data-description="Motif kawung berbentuk lingkaran menyerupai buah kolang-kaling yang ditata simetris. Filosofinya adalah kesucian, keadilan, serta pengendalian diri. Dulu, batik kawung hanya boleh dipakai oleh kalangan bangsawan dan raja. Motif ini melambangkan kehidupan yang teratur dan seimbang."
+             data-image="img/WhatsApp Image 2025-09-30 at 07.39.50_de0a2258.jpg">
+          <div class="h-64 sm:h-80 rounded-t-3xl overflow-hidden">
+            <img src="img/ChatGPT Image Sep 29, 2025, 10_32_28 AM.png" alt="Batik Kawung" 
+                 class="w-full h-full object-cover object-top">
+          </div>
+          <div class="p-6 sm:p-8">
+            <h3 class="text-xl sm:text-2xl font-bold text-stone-800">Batik Kawung</h3>
+            <p class="text-amber-600 font-semibold text-base sm:text-lg">Yogyakarta</p>
+            <button class="mt-4 bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-full text-sm transition-colors">
+              Lihat Detail
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="batik-card rounded-3xl shadow-xl overflow-hidden w-full"
+             data-name="Batik Sidomukti" 
+             data-origin="Solo/Yogyakarta"
+             data-description="Motif klasik dengan ornamen geometris dan isen-isen (isi motif kecil). Kata 'sido' berarti berkesinambungan, sedangkan 'mukti' bermakna kebahagiaan dan kemuliaan. Biasanya dipakai dalam upacara pernikahan sebagai doa agar rumah tangga harmonis dan sejahtera. Motif ini dipercaya membawa berkah dan kemakmuran."
+             data-image="img/WhatsApp Image 2025-09-30 at 07.42.43_614d2b58.jpg">
+          <div class="h-64 sm:h-80 rounded-t-3xl overflow-hidden">
+            <img src="img/ChatGPT Image Sep 29, 2025, 10_34_30 AM.png" alt="Batik Sidomukti" 
+                 class="w-full h-full object-cover object-top">
+          </div>
+          <div class="p-6 sm:p-8">
+            <h3 class="text-xl sm:text-2xl font-bold text-stone-800">Batik Sidomukti</h3>
+            <p class="text-amber-600 font-semibold text-base sm:text-lg">Solo/Yogyakarta</p>
+            <button class="mt-4 bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-full text-sm transition-colors">
+              Lihat Detail
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="batik-card rounded-3xl shadow-xl overflow-hidden w-full"
+             data-name="Batik Singa Barong" 
+             data-origin="Cirebon"
+             data-description="Motif unik dari Cirebon yang menggambarkan sosok singa bersayap dengan pengaruh gaya Tionghoa dan Islam. Melambangkan kekuatan, kewibawaan, dan perlindungan. Motif ini sering digunakan dalam upacara adat keraton dan melambangkan kepemimpinan yang bijaksana serta kekuatan spiritual."
+             data-image="img/WhatsApp Image 2025-09-30 at 07.44.05_17557832.jpg">
+          <div class="h-64 sm:h-80 rounded-t-3xl overflow-hidden">
+            <img src="img/ChatGPT Image Sep 29, 2025, 10_39_28 AM.png" alt="Batik Singa Barong" 
+                 class="w-full h-full object-cover object-top">
+          </div>
+          <div class="p-6 sm:p-8">
+            <h3 class="text-xl sm:text-2xl font-bold text-stone-800">Batik Singa Barong</h3>
+            <p class="text-amber-600 font-semibold text-base sm:text-lg">Cirebon</p>
+            <button class="mt-4 bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-full text-sm transition-colors">
+              Lihat Detail
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="batikModal" class="modal">
+    <div class="modal-content">
+      <div class="p-6 sm:p-8">
+        <div class="flex justify-between items-start mb-6">
+          <div>
+            <h2 id="modalTitle" class="text-2xl sm:text-3xl font-playfair font-bold text-stone-800 mb-2"></h2>
+            <p id="modalOrigin" class="text-amber-600 font-semibold text-lg"></p>
+          </div>
+          <button id="closeModal" class="text-stone-500 hover:text-stone-700 text-2xl">
+            ×
+          </button>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <img id="modalImage" src="" alt="" class="w-full h-80 object-cover rounded-xl shadow-lg">
+          </div>
+          <div class="space-y-4">
+            <h3 class="text-xl font-playfair font-semibold text-stone-800">Deskripsi & Filosofi</h3>
+            <p id="modalDescription" class="text-stone-600 leading-relaxed"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-stone-900 text-white py-12 sm:py-16">
+    <div class="container mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl sm:text-2xl font-playfair font-bold mb-4">Batik Nusantara</h3>
+          <p class="text-stone-300 leading-relaxed text-sm sm:text-base">
+            Melestarikan dan mempromosikan keindahan batik Indonesia sebagai warisan budaya dunia yang tak ternilai.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-base sm:text-lg font-semibold mb-4">Navigasi</h4>
+          <ul class="space-y-2 text-sm sm:text-base">
+            <li><a href="index.html" class="text-stone-300 hover:text-amber-400 transition-colors">Home</a></li>
+            <li><a href="tentang.html" class="text-stone-300 hover:text-amber-400 transition-colors">Tentang Batik</a></li>
+            <li><a href="sejarah.html" class="text-stone-300 hover:text-amber-400 transition-colors">Sejarah</a></li>
+            <li><a href="galeri.html" class="text-amber-400 transition-colors">Galeri</a></li>
+            <li><a href="kontak.html" class="text-stone-300 hover:text-amber-400 transition-colors">Kontak</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-base sm:text-lg font-semibold mb-4">Warisan UNESCO</h4>
+          <p class="text-stone-300 text-xs sm:text-sm leading-relaxed">
+            Batik Indonesia telah diakui UNESCO sebagai Masterpiece of Oral and Intangible Heritage of Humanity pada 2 Oktober 2009.
+          </p>
+        </div>
+      </div>
+      <div class="border-t border-stone-700 mt-8 sm:mt-12 pt-6 sm:pt-8 text-center">
+        <p class="text-stone-400 text-xs sm:text-sm">&copy; 2025 Pameran Batik Indonesia. Warisan budaya untuk generasi masa depan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

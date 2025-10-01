@@ -1,10 +1,9 @@
 // DOM Elements
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
-const exploreBtn = document.getElementById('exploreBtn');
 const batikCards = document.querySelectorAll('.batik-card');
 const modal = document.getElementById('batikModal');
-const closeModal = document.getElementById('closeModal');
+const closeModalBtn = document.getElementById('closeModal');
 const modalTitle = document.getElementById('modalTitle');
 const modalOrigin = document.getElementById('modalOrigin');
 const modalImage = document.getElementById('modalImage');
@@ -15,24 +14,14 @@ mobileMenuBtn?.addEventListener('click', () => {
   mobileMenu.classList.toggle('hidden');
 });
 
-// Explore Button - Scroll to Gallery
-exploreBtn?.addEventListener('click', () => {
-  document.getElementById('galeri').scrollIntoView({ behavior: 'smooth' });
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (mobileMenu && !mobileMenu.contains(e.target) && !mobileMenuBtn?.contains(e.target)) {
+    mobileMenu.classList.add('hidden');
+  }
 });
 
-// Smooth Scrolling for Navigation Links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      mobileMenu.classList.add('hidden'); // Close mobile menu
-    }
-  });
-});
-
-// Batik Card Click Events
+// Batik Card Click Events (untuk halaman galeri)
 batikCards.forEach(card => {
   card.addEventListener('click', () => {
     openModal(card);
@@ -65,24 +54,32 @@ function openModal(card) {
 }
 
 // Close Modal
-closeModal?.addEventListener('click', closeModalFunction);
+closeModalBtn?.addEventListener('click', closeModalFunction);
 modal?.addEventListener('click', (e) => {
   if (e.target === modal) {
     closeModalFunction();
   }
 });
+
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && modal.classList.contains('active')) {
+  if (e.key === 'Escape' && modal?.classList.contains('active')) {
     closeModalFunction();
   }
 });
+
 function closeModalFunction() {
-  modal.classList.remove('active');
-  document.body.style.overflow = '';
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 }
 
 // Intersection Observer for Animations
-const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+const observerOptions = { 
+  threshold: 0.1, 
+  rootMargin: '0px 0px -50px 0px' 
+};
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -92,7 +89,9 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
+// Initialize animations on page load
 document.addEventListener('DOMContentLoaded', () => {
+  // Fade in elements
   const fadeElements = document.querySelectorAll('.fade-in');
   fadeElements.forEach(el => {
     el.style.opacity = '0';
@@ -101,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(el);
   });
 
+  // Card hover animations
   const cards = document.querySelectorAll('.card-hover');
   cards.forEach(card => {
     card.style.opacity = '0';
@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(card);
   });
 
+  // Batik cards staggered animation
   batikCards.forEach((card, index) => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(50px)';
@@ -120,12 +121,14 @@ document.addEventListener('DOMContentLoaded', () => {
 // Navbar background on scroll
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('nav');
-  if (window.scrollY > 100) {
-    nav.classList.add('bg-white/98');
-    nav.classList.remove('bg-white/95');
-  } else {
-    nav.classList.add('bg-white/95');
-    nav.classList.remove('bg-white/98');
+  if (nav) {
+    if (window.scrollY > 100) {
+      nav.classList.add('bg-white/98');
+      nav.classList.remove('bg-white/95');
+    } else {
+      nav.classList.add('bg-white/95');
+      nav.classList.remove('bg-white/98');
+    }
   }
 });
 
@@ -151,6 +154,37 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Auto-changing Hero Background (hanya untuk halaman home)
+const heroSection = document.getElementById('home');
+
+if (heroSection) {
+  // Array gambar background
+  const backgrounds = [
+    'img/ChatGPT Image Sep 29, 2025, 10_21_58 AM.png',
+    'img/ChatGPT Image Sep 30, 2025, 08_35_03 AM.png',
+    'img/WhatsApp Image 2025-09-30 at 08.57.22_1583dafe.jpg',
+    'img/WhatsApp Image 2025-09-30 at 09.29.16_c1697d08.jpg'
+  ];
+
+  let currentBgIndex = 0;
+
+  function changeBackground() {
+    currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
+    
+    // Fade effect
+    heroSection.style.transition = 'opacity 0.8s ease-in-out';
+    heroSection.style.opacity = '0.6';
+    
+    setTimeout(() => {
+      heroSection.style.backgroundImage = `url('${backgrounds[currentBgIndex]}')`;
+      heroSection.style.opacity = '1';
+    }, 800);
+  }
+
+  // Ganti background setiap 3 detik (3000ms)
+  setInterval(changeBackground, 3000);
+}
+
 // Console welcome message
 console.log(`
 🎨 Selamat datang di Batik Nusantara!
@@ -158,31 +192,7 @@ console.log(`
 ✨ Website dibuat dengan cinta untuk melestarikan budaya Indonesia
 `);
 
-// Auto-changing Hero Background
-const heroSection = document.getElementById('home');
-
-// Array gambar background (ganti dengan path gambar Anda)
-const backgrounds = [
-  'img/ChatGPT Image Sep 29, 2025, 10_21_58 AM.png',
-  'img/ChatGPT Image Sep 30, 2025, 08_35_03 AM.png', // ganti dengan nama file gambar Anda
-  'img/WhatsApp Image 2025-09-30 at 08.57.22_1583dafe.jpg',
-  'img/WhatsApp Image 2025-09-30 at 09.29.16_c1697d08.jpg'
-];
-
-let currentBgIndex = 0;
-
-function changeBackground() {
-  currentBgIndex = (currentBgIndex + 1) % backgrounds.length;
-  
-  // Fade effect
-  heroSection.style.transition = 'opacity 0.8s ease-in-out';
-  heroSection.style.opacity = '0.6';
-  
-  setTimeout(() => {
-    heroSection.style.backgroundImage = `url('${backgrounds[currentBgIndex]}')`;
-    heroSection.style.opacity = '1';
-  }, 800);
-}
-
-// Ganti background setiap 3 detik (3000ms)
-setInterval(changeBackground, 3000);
+// Smooth scroll to top when page loads
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
+});
